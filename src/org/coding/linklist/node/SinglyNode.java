@@ -26,4 +26,42 @@ public class SinglyNode {
     public void setNext(SinglyNode next) {
         this.next = next;
     }
+
+    public static void main(String[] args) {
+        SinglyNode head =  new SinglyNode(1);
+        SinglyNode curNode = head;
+        for (int i=2 ; i< 6; i++){
+            curNode.setNext(new SinglyNode(i));
+            curNode = curNode.getNext();
+        }
+        printNodeData(head);
+        System.out.println("----------------------------------");
+        head = reversal(head);
+        printNodeData(head);
+
+    }
+
+    private static SinglyNode reversal(SinglyNode head) {
+        if (head == null) {
+            return head;
+        }
+        SinglyNode curNode = head;
+        SinglyNode preNode = null;
+        while (curNode != null){
+            SinglyNode tempNode = curNode.next;
+            curNode.setNext(preNode);
+            preNode = curNode;
+            curNode = tempNode;
+        }
+        return preNode;
+
+    }
+
+    private static void printNodeData(SinglyNode head) {
+        SinglyNode curNode = head;
+        while (curNode != null){
+            System.out.println(curNode.data);
+            curNode = curNode.getNext();
+        }
+    }
 }
