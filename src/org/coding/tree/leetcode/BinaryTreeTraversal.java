@@ -3,7 +3,10 @@ package org.coding.tree.leetcode;
 import java.util.LinkedList;
 import java.util.List;
 
-public class BinaryTree {
+/**
+ * 二叉树的遍历
+ */
+public class BinaryTreeTraversal {
     // Definition for a binary tree node.
     public class TreeNode {
         int val;
@@ -143,4 +146,24 @@ public class BinaryTree {
         return resultList;
     }
 
+    /**
+     * 深度优先遍历=前序遍历
+     */
+
+    /**
+     * 广度优先遍历
+     * Breath first search
+     */
+    public List<Integer> BFS(TreeNode root){
+        LinkedList<Integer> resultList = new LinkedList<>();
+        LinkedList<TreeNode> queue = new LinkedList<>();
+        queue.add(root);
+        while (queue.isEmpty()) {
+            TreeNode last = queue.pollFirst();
+            resultList.add(last.val);
+            queue.addLast(last.left);
+            queue.addLast(last.right);
+        }
+        return resultList;
+    }
 }
