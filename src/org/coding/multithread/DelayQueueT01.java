@@ -11,6 +11,12 @@ public class DelayQueueT01 {
         DelayQueue queue = new DelayQueue();
         DelayUser user = new DelayUser();
         queue.add(user);
+        try {
+            queue.take();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } finally {
+        }
     }
 
      static class DelayUser implements Delayed{
